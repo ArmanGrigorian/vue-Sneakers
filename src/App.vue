@@ -1,13 +1,9 @@
 <script setup>
-
+import MyHeader from './components/MyHeader.vue'
 </script>
 
 <template>
-  
-  <h1 class="text-3xl">Hello</h1>
-
+  <main class="max-w-[1440px] min-h-[100dvh] mx-auto bg-customWhite rounded-xl shadow-xl">
+    <MyHeader />
+  </main>
 </template>
-
-<style scoped>
-
-</style>
