@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         customMainBg: '#f7fee7',
+        customHeaderBg: '#f1ece7',
         customDrawerBg: '#1e1e1e99',
         customWhite: '#fcfcfc',
         customBlack: '#202020',
@@ -14,9 +15,10 @@ export default {
       screens: {
         '3xs': '320px'
       },
+      backgroundImage: {
+        headerBg: "url('/public/images/headerBackground.png')"
+      }
     }
   },
   plugins: []
 }
-
-
