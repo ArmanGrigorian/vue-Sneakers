@@ -16,6 +16,36 @@ import DrawerItem from './DrawerItem.vue'
       :handle-add-to-cart="handleAddToCart"
       :handle-add-to-favorite="handleAddToFavorite"
     />
+    <DrawerItem
+      img-src="/images/sneakers-1.jpg"
+      img-alt="sneaker-1 png"
+      title="Мужские Кроссовки Nike Blazer Mid Suede"
+      :price="12999"
+      :is-liked="false"
+      :is-added="false"
+      :handle-add-to-cart="handleAddToCart"
+      :handle-add-to-favorite="handleAddToFavorite"
+    />
+    <DrawerItem
+      img-src="/images/sneakers-1.jpg"
+      img-alt="sneaker-1 png"
+      title="Мужские Кроссовки Nike Blazer Mid Suede"
+      :price="12999"
+      :is-liked="false"
+      :is-added="false"
+      :handle-add-to-cart="handleAddToCart"
+      :handle-add-to-favorite="handleAddToFavorite"
+    />
+    <DrawerItem
+      img-src="/images/sneakers-1.jpg"
+      img-alt="sneaker-1 png"
+      title="Мужские Кроссовки Nike Blazer Mid Suede"
+      :price="12999"
+      :is-liked="false"
+      :is-added="false"
+      :handle-add-to-cart="handleAddToCart"
+      :handle-add-to-favorite="handleAddToFavorite"
+    />
 
   </div>
 </template>

@@ -9,12 +9,14 @@ export default {
         customWhite: '#fcfcfc',
         customBlack: '#202020',
         customGrey: '#464646',
-        customGreen: '#9DD458',
+        customGreen: '#9DD458'
       },
       screens: {
         '3xs': '320px'
-      }
+      },
     }
   },
   plugins: []
 }
+
+
