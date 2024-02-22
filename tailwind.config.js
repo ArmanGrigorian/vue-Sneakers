@@ -7,10 +7,10 @@ export default {
         customMainBg: '#f7fee7',
         customWhite: '#fcfcfc',
         customBlack: '#202020',
-        customGrey: '#505050'
+        customGrey: '#464646'
       },
       screens: {
-        "3xs": "320px",
+        '3xs': '320px'
       }
     }
   },
