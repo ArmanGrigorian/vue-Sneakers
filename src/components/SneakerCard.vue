@@ -7,7 +7,7 @@ defineProps({
   isLiked: Boolean,
   isAdded: Boolean,
   handleAddToCart: Function,
-  handleAddToFavorite: Function,
+  handleAddToFavorite: Function
 })
 </script>
 
@@ -15,7 +15,12 @@ defineProps({
   <div
     class="relative bg-customWhite border w-[232px] rounded-3xl shadow-md flex flex-col gap-10 p-5 transition hover:-translate-y-1 hover:shadow-xl max-3xs:w-full"
   >
-    <button @click="handleAddToFavorite" type="button" class="absolute top-5 left-5 active:scale-95">
+    <button
+      @click="handleAddToFavorite"
+      title="add to favorite"
+      type="button"
+      class="absolute top-5 left-5 active:scale-95"
+    >
       <img
         v-if="!isLiked"
         src="/icons/like-1.svg"
@@ -43,7 +48,7 @@ defineProps({
         <strong class="text-customBlack font-semibold">{{ price }} &#8381;</strong>
       </p>
 
-      <button @click="handleAddToCart" type="button" class="active:scale-95">
+      <button @click="handleAddToCart" type="button" title="add to cart" class="active:scale-95">
         <img
           v-if="!isAdded"
           src="/icons/plus.svg"
