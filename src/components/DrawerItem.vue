@@ -14,7 +14,7 @@ defineProps({
     <button
       type="button"
       title="remove from cart"
-      class="absolute top-3 right-3 w-8 h-8 border border-neutral-300 rounded-md shadow font-bold text-neutral-400 hover:text-customWhite hover:bg-red-700 active:scale-95"
+      class="absolute top-3 right-3 w-10 h-10 border border-neutral-300 rounded-md shadow font-bold text-neutral-400 hover:text-customWhite hover:bg-red-700 active:scale-95"
     >
       X
     </button>

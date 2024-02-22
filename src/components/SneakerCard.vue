@@ -25,13 +25,13 @@ defineProps({
         v-if="!isLiked"
         src="/icons/like-1.svg"
         alt="like svg"
-        class="block w-8 h-8 border border-neutral-300 rounded-lg shadow opacity-75 transition hover:opacity-100"
+        class="block w-9 h-9 border border-neutral-300 rounded-lg shadow opacity-75 transition hover:opacity-100"
       />
       <img
         v-else
         src="/icons/like-2.svg"
         alt="liked svg"
-        class="block w-8 h-8 opacity-100 shadow border border-red-50 rounded-lg transition hover:opacity-80"
+        class="block w-9 h-9 opacity-100 shadow border border-red-50 rounded-lg transition hover:opacity-80"
       />
     </button>
 
@@ -53,13 +53,13 @@ defineProps({
           v-if="!isAdded"
           src="/icons/plus.svg"
           alt="plus svg"
-          class="block w-8 h-8 border border-neutral-300 rounded-lg shadow opacity-75 transition hover:opacity-100"
+          class="block w-9 h-9 border border-neutral-300 rounded-lg shadow opacity-75 transition hover:opacity-100"
         />
         <img
           v-else
           src="/icons/checked.svg"
           alt="checked svg"
-          class="block w-8 h-8 transition opacity-100 hover:opacity-80"
+          class="block w-9 h-9 transition opacity-100 hover:opacity-80"
         />
       </button>
     </div>
