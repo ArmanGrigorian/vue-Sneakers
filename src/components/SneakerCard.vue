@@ -1,25 +1,23 @@
 <script setup>
-import { ref } from 'vue'
-
-const liked = ref(false)
-const checked = ref(false)
-
-function handleLike() {
-  liked.value = !liked.value
-}
-
-function handleCheck() {
-  checked.value = !checked.value
-}
+defineProps({
+  imgSrc: String,
+  imgAlt: String,
+  title: String,
+  price: Number,
+  isLiked: Boolean,
+  isAdded: Boolean,
+  handleAddToCart: Function,
+  handleAddToFavorite: Function,
+})
 </script>
 
 <template>
   <div
-    class="relative border w-[232px] rounded-3xl shadow-md flex flex-col gap-10 p-5 transition hover:-translate-y-1 hover:shadow-xl max-sm:w-full"
+    class="relative bg-customWhite border w-[232px] rounded-3xl shadow-md flex flex-col gap-10 p-5 transition hover:-translate-y-1 hover:shadow-xl max-3xs:w-full"
   >
-    <button @click="handleLike" type="button" class="absolute top-5 left-5 active:scale-95">
+    <button @click="handleAddToFavorite" type="button" class="absolute top-5 left-5 active:scale-95">
       <img
-        v-if="!liked"
+        v-if="!isLiked"
         src="/icons/like-1.svg"
         alt="like svg"
         class="block w-8 h-8 border border-neutral-300 rounded-lg shadow opacity-75 transition hover:opacity-100"
@@ -33,24 +31,21 @@ function handleCheck() {
     </button>
 
     <div>
-      <img
-       src="/images/sneakers-1.jpg"
-        alt="sneakers-1 jpg"
-         class="block w-full max-h-40 object-contain object-top" />
+      <img :src="imgSrc" :alt="imgAlt" class="block w-full max-h-40 object-contain object-top" />
       <h5 class="text-customBlack text-sm font-semibold">
-        Мужские Кроссовки Nike Blazer Mid Suede
+        {{ title }}
       </h5>
     </div>
 
     <div class="flex justify-between items-center gap-1">
       <p class="text-customGrey text-sm">
         Цена: <br />
-        <strong class="text-customBlack font-semibold">12 999 руб.</strong>
+        <strong class="text-customBlack font-semibold">{{ price }} &#8381;</strong>
       </p>
 
-      <button @click="handleCheck" type="button" class="active:scale-95">
+      <button @click="handleAddToCart" type="button" class="active:scale-95">
         <img
-          v-if="!checked"
+          v-if="!isAdded"
           src="/icons/plus.svg"
           alt="plus svg"
           class="block w-8 h-8 border border-neutral-300 rounded-lg shadow opacity-75 transition hover:opacity-100"
