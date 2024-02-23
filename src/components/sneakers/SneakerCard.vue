@@ -13,7 +13,7 @@ defineProps({
 
 <template>
   <div
-    class="relative bg-customWhite border w-[232px] rounded-3xl shadow-md flex flex-col gap-7 p-5 transition hover:-translate-y-1 hover:shadow-xl max-3xs:w-full"
+    class="relative bg-customWhite border w-[232px] h-80 rounded-3xl shadow-md flex flex-col justify-between p-5 transition hover:-translate-y-1 hover:shadow-xl max-3xs:w-full"
   >
     <button
       @click="handleAddToFavorite"

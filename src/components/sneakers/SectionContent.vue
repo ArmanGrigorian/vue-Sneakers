@@ -1,16 +1,17 @@
 <script setup>
+import axios from 'axios'
 import { onMounted, ref } from 'vue'
 import SneakerCard from './SneakerCard.vue'
 
 const sneakers = ref([])
 const isLoading = ref(false)
+const url = 'https://211d4e041ca93fee.mokky.dev'
 
 async function getSneakers() {
   try {
     isLoading.value = true
-    const baseURL = 'https://211d4e041ca93fee.mokky.dev'
-    const req = await fetch(baseURL + '/items').then((res) => res.json())
-    sneakers.value = req
+    const req = await axios.get(url + '/items')
+    sneakers.value = req.data
   } catch (err) {
     console.error(err)
   } finally {
@@ -21,7 +22,6 @@ async function getSneakers() {
 onMounted(() => {
   getSneakers()
 })
-
 </script>
 
 <template>
@@ -41,5 +41,3 @@ onMounted(() => {
   </div>
 </template>
 
-<!-- :handle-add-to-cart="handleAddToCart"
-:handle-add-to-favorite="handleAddToFavorite" -->
