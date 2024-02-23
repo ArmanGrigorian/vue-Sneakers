@@ -16,7 +16,7 @@ export default {
         '3xs': '320px'
       },
       backgroundImage: {
-        headerBg: "url('/public/images/headerBackground.png')"
+        headerBg: "url('/images/headerBackground.png')"
       }
     }
   },

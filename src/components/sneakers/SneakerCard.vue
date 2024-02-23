@@ -4,7 +4,7 @@ defineProps({
   imgAlt: String,
   title: String,
   price: Number,
-  isLiked: Boolean,
+  isFavorite: Boolean,
   isAdded: Boolean,
   handleAddToCart: Function,
   handleAddToFavorite: Function
@@ -22,7 +22,7 @@ defineProps({
       class="absolute top-5 left-5 active:scale-95"
     >
       <img
-        v-if="!isLiked"
+        v-if="!isFavorite"
         src="/icons/like-1.svg"
         alt="like svg"
         class="block w-9 h-9 border border-neutral-300 rounded-lg shadow opacity-75 transition hover:opacity-100"
@@ -30,7 +30,7 @@ defineProps({
       <img
         v-else
         src="/icons/like-2.svg"
-        alt="liked svg"
+        alt="Favorite svg"
         class="block w-9 h-9 opacity-100 shadow border border-red-50 rounded-lg transition hover:opacity-80"
       />
     </button>
