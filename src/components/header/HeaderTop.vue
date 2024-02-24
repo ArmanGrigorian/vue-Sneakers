@@ -9,7 +9,7 @@ import HeaderNav from './HeaderNav.vue'
       <div>
         <h2 class="text-customBlack text-2xl font-bold select-none max-md:text-xl">Vue Sneakers</h2>
 
-        <p class="text-customGrey text-sm font-medium select-none">Магазин лучших кроссовок</p>
+        <p class="text-customGrey text-sm font-medium select-none">Shop the best sneakers</p>
       </div>
     </div>
     <HeaderNav />

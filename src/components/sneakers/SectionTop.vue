@@ -1,15 +1,18 @@
+<script setup>
+defineProps({
+  handleSort: Function,
+  handleSearch: Function
+})
+</script>
 <template>
   <div class="flex justify-between items-center gap-2 max-md:flex-col">
-    <h2 class="text-customBlack text-3xl font-bold">Все кроссовки</h2>
+    <h2 class="text-customBlack text-3xl font-bold">All sneakers</h2>
 
     <div class="px-2 py-1 border rounded max-md:w-full">
-      <select
-       name="select"
-       class="w-full outline-offset-4">
-        <option value="default">По умолчанию</option>
-        <option value="title">По названию</option>
-        <option value="asc">По цене по возрастанию</option>
-        <option value="desc">По цене по убыванию</option>
+      <select @change="handleSort" name="sort" class="w-full outline-offset-4">
+        <option value="title">By name</option>
+        <option value="price">By price ascending</option>
+        <option value="-price">By price descending</option>
       </select>
     </div>
 
@@ -20,6 +23,7 @@
         class="absolute top-0 bottom-0 my-auto left-2"
       />
       <input
+        @input="handleSearch"
         type="text"
         name="search"
         placeholder="Поиск..."

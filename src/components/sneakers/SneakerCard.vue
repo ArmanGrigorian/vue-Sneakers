@@ -1,14 +1,15 @@
 <script setup>
+import { inject } from 'vue'
+
 defineProps({
-  imgSrc: String,
-  imgAlt: String,
+  imageUrl: String,
   title: String,
   price: Number,
   isFavorite: Boolean,
-  isAdded: Boolean,
-  handleAddToCart: Function,
-  handleAddToFavorite: Function
+  isAdded: Boolean
 })
+
+const addToFavorites = inject('addToFavorites');
 </script>
 
 <template>
@@ -16,8 +17,8 @@ defineProps({
     class="relative bg-customWhite border w-[232px] h-80 rounded-3xl shadow-md flex flex-col justify-between p-5 transition hover:-translate-y-1 hover:shadow-xl max-3xs:w-full"
   >
     <button
-      @click="handleAddToFavorite"
-      title="add to favorite"
+      @click="addToFavorites"
+      title="Add to favorites"
       type="button"
       class="absolute top-5 left-5 active:scale-95"
     >
@@ -36,7 +37,11 @@ defineProps({
     </button>
 
     <div>
-      <img :src="imgSrc" :alt="imgAlt" class="block w-full max-h-40 object-contain object-top" />
+      <img
+        :src="imageUrl"
+        :alt="title + ' image'"
+        class="block w-full max-h-40 object-contain object-top"
+      />
       <h5 class="text-customBlack text-base font-semibold">
         {{ title }}
       </h5>
@@ -44,11 +49,11 @@ defineProps({
 
     <div class="flex justify-between items-center gap-1">
       <p class="text-customGrey text-sm">
-        Цена: <br />
-        <strong class="text-customBlack font-semibold">{{ price }} &#8381;</strong>
+        Price: <br />
+        <strong class="text-customBlack font-semibold">{{ price }} &dollar;</strong>
       </p>
 
-      <button @click="handleAddToCart" type="button" title="add to cart" class="active:scale-95">
+      <button @click="addToOrders" type="button" title="Add to orders" class="active:scale-95">
         <img
           v-if="!isAdded"
           src="/icons/plus.svg"

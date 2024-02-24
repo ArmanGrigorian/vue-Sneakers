@@ -19,7 +19,7 @@ import HeaderTop from './HeaderTop.vue'
         title="Купить"
         class="bg-customGreen text-customWhite font-medium w-44 h-12 rounded-md shadow-lg hover:text-customGreen hover:bg-customMainBg active:scale-95"
       >
-        Купить
+        Buy Now
       </button>
     </div>
   </header>

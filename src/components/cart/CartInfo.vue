@@ -2,12 +2,12 @@
   <div class="flex flex-col gap-4">
     <div>
       <p class="flex justify-between items-center gap-1 border-b border-dashed">
-        <span>Итого:</span>
-        <strong>21 498 &#8381;</strong>
+        <span>Total:</span>
+        <strong>21.498 &dollar;</strong>
       </p>
       <p class="mt-1 flex justify-between items-center gap-1 border-b border-dashed">
-        <span>Налог 5%:</span>
-        <strong>1074 &#8381;</strong>
+        <span>Tax 5%:</span>
+        <strong>10.74 &dollar;</strong>
       </p>
     </div>
 
@@ -16,7 +16,7 @@
       title="Оформить заказ"
       class="relative bg-customGreen w-full h-14 rounded-lg text-customWhite text-lg font-medium transition opacity-85 hover:opacity-100 active:scale-95"
     >
-      Оформить заказ
+      Order Now
       <img
         src="/icons/arrow-next.svg"
         alt="arrow-next svg"
