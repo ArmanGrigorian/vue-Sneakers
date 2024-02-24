@@ -5,6 +5,7 @@ import { onMounted, provide, reactive, ref, watch } from 'vue'
 import SectionContent from './SectionContent.vue'
 import SectionTop from './SectionTop.vue'
 
+const url = 'https://211d4e041ca93fee.mokky.dev'
 const sneakers = ref([])
 const loadingSneakers = ref(false)
 const filters = reactive({
@@ -20,18 +21,18 @@ const handleSearch = debounce((e) => {
 })
 
 async function getFavorites() {
-  const url = 'https://211d4e041ca93fee.mokky.dev/favorites'
   try {
-    const { data: favorites } = await axios.get(url)
+    const { data: favorites } = await axios.get(url + '/favorites')
 
     sneakers.value = sneakers.value.map((sneaker) => {
-      const favorite = favorites.find((fav) => fav.favoriteId === sneaker.id)
+      const favorite = favorites.find((fav) => fav.item_id === sneaker.id)
+      console.log(favorite)
 
       if (!favorite) return sneaker
 
       return {
         ...sneaker,
-        isFavorite: !sneaker.isFavorite,
+        isFavorite: true,
         favoriteId: favorite.id
       }
     })
@@ -40,23 +41,41 @@ async function getFavorites() {
   }
 }
 
-async function addToFavorites(sneaker) {
-  sneaker.isFavorite = !sneaker.isFavorite
+async function postDeleteFromFavorites(sneaker) {
+  try {
+    if (!sneaker.isFavorite) {
+      const obj = {
+        ...sneaker,
+        item_id: sneaker.id
+      }
+
+      sneaker.isFavorite = true
+      const { data } = await axios.post(url + '/favorites', obj)
+
+      sneaker.favoriteId = data.id
+    } else {
+      sneaker.isFavorite = false
+      await axios.delete(url + `/favorites/${sneaker.favoriteId}`)
+      sneaker.favoriteId = null
+    }
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 async function getSneakers(searchQuery, sortBy) {
-  const url = 'https://211d4e041ca93fee.mokky.dev/items'
   const params = new URLSearchParams()
 
   try {
     loadingSneakers.value = true
     if (searchQuery) params.append('title', '*' + filters.searchQuery)
     if (sortBy) params.append('sortBy', filters.sortBy)
-    const { data } = await axios.get(`${url}?${params.toString()}`)
+    const { data } = await axios.get(`${url}/items?${params.toString()}`)
     sneakers.value = data.map((obj) => ({
       ...obj,
       isFavorite: false,
-      isAdded: false
+      isAdded: false,
+      favoriteId: null
     }))
   } catch (err) {
     console.error(err)
@@ -74,7 +93,7 @@ watch(filters, () => {
   getSneakers(filters.searchQuery, filters.sortBy)
 })
 
-provide('addToFavorites', addToFavorites)
+provide('postDeleteFromFavorites', postDeleteFromFavorites)
 </script>
 
 <template>

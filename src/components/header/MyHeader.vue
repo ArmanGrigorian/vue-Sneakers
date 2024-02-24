@@ -16,7 +16,7 @@ import HeaderTop from './HeaderTop.vue'
       </h1>
       <button
         type="button"
-        title="Купить"
+        title="Buy Now"
         class="bg-customGreen text-customWhite font-medium w-44 h-12 rounded-md shadow-lg hover:text-customGreen hover:bg-customMainBg active:scale-95"
       >
         Buy Now

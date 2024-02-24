@@ -3,8 +3,10 @@ import SneakerCard from './SneakerCard.vue'
 
 defineProps({
   sneakers: Array,
-  loadingSneakers: Boolean
+  loadingSneakers: Boolean,
 })
+
+
 </script>
 
 <template>
@@ -14,11 +16,7 @@ defineProps({
       v-else
       v-for="sneaker in sneakers"
       :key="sneaker.id"
-      :image-url="sneaker.imageUrl"
-      :title="sneaker.title"
-      :price="sneaker.price"
-      :isFavorite="sneaker.isFavorite"
-      :isAdded="sneaker.isAdded"
+      :sneaker="sneaker"
     />
   </div>
 </template>

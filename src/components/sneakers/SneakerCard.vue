@@ -1,29 +1,26 @@
 <script setup>
 import { inject } from 'vue'
-
 defineProps({
   imageUrl: String,
-  title: String,
-  price: Number,
-  isFavorite: Boolean,
-  isAdded: Boolean
+  sneaker: Object
 })
 
-const addToFavorites = inject('addToFavorites');
+const postDeleteFromFavorites = inject('postDeleteFromFavorites')
+
 </script>
 
 <template>
   <div
-    class="relative bg-customWhite border w-[232px] h-80 rounded-3xl shadow-md flex flex-col justify-between p-5 transition hover:-translate-y-1 hover:shadow-xl max-3xs:w-full"
+    class="relative bg-customWhite border w-[232px] h-72 rounded-3xl shadow-md flex flex-col justify-between p-5 transition hover:-translate-y-1 hover:shadow-xl max-3xs:w-full"
   >
     <button
-      @click="addToFavorites"
+      @click="postDeleteFromFavorites(sneaker)"
       title="Add to favorites"
       type="button"
       class="absolute top-5 left-5 active:scale-95"
     >
       <img
-        v-if="!isFavorite"
+        v-if="!sneaker.isFavorite"
         src="/icons/like-1.svg"
         alt="like svg"
         class="block w-9 h-9 border border-neutral-300 rounded-lg shadow opacity-75 transition hover:opacity-100"
@@ -38,24 +35,24 @@ const addToFavorites = inject('addToFavorites');
 
     <div>
       <img
-        :src="imageUrl"
-        :alt="title + ' image'"
+        :src="sneaker.imageUrl"
+        :alt="sneaker.title + ' image'"
         class="block w-full max-h-40 object-contain object-top"
       />
       <h5 class="text-customBlack text-base font-semibold">
-        {{ title }}
+        {{ sneaker.title }}
       </h5>
     </div>
 
     <div class="flex justify-between items-center gap-1">
       <p class="text-customGrey text-sm">
         Price: <br />
-        <strong class="text-customBlack font-semibold">{{ price }} &dollar;</strong>
+        <strong class="text-customBlack font-semibold">{{ sneaker.price }} &dollar;</strong>
       </p>
 
       <button @click="addToOrders" type="button" title="Add to orders" class="active:scale-95">
         <img
-          v-if="!isAdded"
+          v-if="!sneaker.isAdded"
           src="/icons/plus.svg"
           alt="plus svg"
           class="block w-9 h-9 border border-neutral-300 rounded-lg shadow opacity-75 transition hover:opacity-100"

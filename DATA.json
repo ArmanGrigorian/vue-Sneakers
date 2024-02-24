@@ -1,0 +1,543 @@
+[
+  {
+    "id": 1,
+    "title": "Nike Blazer Mid Suede",
+    "price": 12.99,
+    "imageUrl": "/images/sneakers-1.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Nike Air Max 270",
+    "price": 15.6,
+    "imageUrl": "/images/sneakers-2.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Nike Blazer Mid Suede",
+    "price": 8.49,
+    "imageUrl": "/images/sneakers-3.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Puma X Aka Boku Future Rider",
+    "price": 7.8,
+    "imageUrl": "/images/sneakers-4.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Future Rider",
+    "price": 9.55,
+    "imageUrl": "/images/sneakers-5.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Black Edition",
+    "price": 16.99,
+    "imageUrl": "/images/sneakers-6.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Orange Boomb Edition",
+    "price": 7.49,
+    "imageUrl": "/images/sneakers-7.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Nike Air Max 270",
+    "price": 15.6,
+    "imageUrl": "/images/sneakers-8.jpg"
+  },
+  {
+    "id": 9,
+    "title": "Nike Air Force 1",
+    "price": 5.9,
+    "imageUrl": "/images/sneakers-9.jpg"
+  },
+  {
+    "id": 10,
+    "title": "Adidas Ultraboost",
+    "price": 11.5,
+    "imageUrl": "/images/sneakers-10.jpg"
+  },
+  {
+    "id": 11,
+    "title": "Puma Clyde All-Pro",
+    "price": 7.6,
+    "imageUrl": "/images/sneakers-11.jpg"
+  },
+  {
+    "id": 12,
+    "title": "Converse Chuck Taylor All-Star",
+    "price": 13,
+    "imageUrl": "/images/sneakers-12.jpg"
+  },
+  {
+    "name": "Root",
+    "email": "admin@email.com",
+    "id": 13
+  },
+  {
+    "id": 14
+  },
+  {
+    "0": {
+      "id": 1,
+      "title": "Nike Blazer Mid Suede",
+      "price": 12.99,
+      "imageUrl": "/images/sneakers-1.jpg",
+      "isFavorite": true,
+      "favoriteId": 3,
+      "isAdded": false
+    },
+    "1": {
+      "id": 2,
+      "title": "Nike Air Max 270",
+      "price": 15.6,
+      "imageUrl": "/images/sneakers-2.jpg",
+      "isFavorite": true,
+      "favoriteId": 1,
+      "isAdded": false
+    },
+    "2": {
+      "id": 3,
+      "title": "Nike Blazer Mid Suede",
+      "price": 8.49,
+      "imageUrl": "/images/sneakers-3.jpg",
+      "isFavorite": true,
+      "favoriteId": 2,
+      "isAdded": false
+    },
+    "3": {
+      "id": 4,
+      "title": "Puma X Aka Boku Future Rider",
+      "price": 7.8,
+      "imageUrl": "/images/sneakers-4.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "4": {
+      "id": 5,
+      "title": "Future Rider",
+      "price": 9.55,
+      "imageUrl": "/images/sneakers-5.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "5": {
+      "id": 6,
+      "title": "Black Edition",
+      "price": 16.99,
+      "imageUrl": "/images/sneakers-6.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "6": {
+      "id": 7,
+      "title": "Orange Boomb Edition",
+      "price": 7.49,
+      "imageUrl": "/images/sneakers-7.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "7": {
+      "id": 8,
+      "title": "Nike Air Max 270",
+      "price": 15.6,
+      "imageUrl": "/images/sneakers-8.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "8": {
+      "id": 9,
+      "title": "Nike Air Force 1",
+      "price": 5.9,
+      "imageUrl": "/images/sneakers-9.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "9": {
+      "id": 10,
+      "title": "Adidas Ultraboost",
+      "price": 11.5,
+      "imageUrl": "/images/sneakers-10.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "10": {
+      "id": 11,
+      "title": "Puma Clyde All-Pro",
+      "price": 7.6,
+      "imageUrl": "/images/sneakers-11.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "11": {
+      "id": 12,
+      "title": "Converse Chuck Taylor All-Star",
+      "price": 13,
+      "imageUrl": "/images/sneakers-12.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "12": {
+      "name": "Root",
+      "email": "admin@email.com",
+      "id": 13,
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "13": {
+      "id": 14,
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "id": 15
+  },
+  {
+    "0": {
+      "id": 1,
+      "title": "Nike Blazer Mid Suede",
+      "price": 12.99,
+      "imageUrl": "/images/sneakers-1.jpg",
+      "isFavorite": true,
+      "favoriteId": 3,
+      "isAdded": false
+    },
+    "1": {
+      "id": 2,
+      "title": "Nike Air Max 270",
+      "price": 15.6,
+      "imageUrl": "/images/sneakers-2.jpg",
+      "isFavorite": true,
+      "favoriteId": 1,
+      "isAdded": false
+    },
+    "2": {
+      "id": 3,
+      "title": "Nike Blazer Mid Suede",
+      "price": 8.49,
+      "imageUrl": "/images/sneakers-3.jpg",
+      "isFavorite": true,
+      "favoriteId": 2,
+      "isAdded": false
+    },
+    "3": {
+      "id": 4,
+      "title": "Puma X Aka Boku Future Rider",
+      "price": 7.8,
+      "imageUrl": "/images/sneakers-4.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "4": {
+      "id": 5,
+      "title": "Future Rider",
+      "price": 9.55,
+      "imageUrl": "/images/sneakers-5.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "5": {
+      "id": 6,
+      "title": "Black Edition",
+      "price": 16.99,
+      "imageUrl": "/images/sneakers-6.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "6": {
+      "id": 7,
+      "title": "Orange Boomb Edition",
+      "price": 7.49,
+      "imageUrl": "/images/sneakers-7.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "7": {
+      "id": 8,
+      "title": "Nike Air Max 270",
+      "price": 15.6,
+      "imageUrl": "/images/sneakers-8.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "8": {
+      "id": 9,
+      "title": "Nike Air Force 1",
+      "price": 5.9,
+      "imageUrl": "/images/sneakers-9.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "9": {
+      "id": 10,
+      "title": "Adidas Ultraboost",
+      "price": 11.5,
+      "imageUrl": "/images/sneakers-10.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "10": {
+      "id": 11,
+      "title": "Puma Clyde All-Pro",
+      "price": 7.6,
+      "imageUrl": "/images/sneakers-11.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "11": {
+      "id": 12,
+      "title": "Converse Chuck Taylor All-Star",
+      "price": 13,
+      "imageUrl": "/images/sneakers-12.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "id": 16
+  },
+  {
+    "0": {
+      "id": 1,
+      "title": "Nike Blazer Mid Suede",
+      "price": 12.99,
+      "imageUrl": "/images/sneakers-1.jpg",
+      "isFavorite": true,
+      "favoriteId": 3,
+      "isAdded": false
+    },
+    "1": {
+      "id": 2,
+      "title": "Кроссовки Nike Air Max 270",
+      "price": 15.6,
+      "imageUrl": "/images/sneakers-2.jpg",
+      "isFavorite": true,
+      "favoriteId": 1,
+      "isAdded": false
+    },
+    "2": {
+      "id": 3,
+      "title": "Кроссовки Nike Blazer Mid Suede",
+      "price": 8.49,
+      "imageUrl": "/images/sneakers-3.jpg",
+      "isFavorite": true,
+      "favoriteId": 2,
+      "isAdded": false
+    },
+    "3": {
+      "id": 4,
+      "title": "Puma X Aka Boku Future Rider",
+      "price": 7.8,
+      "imageUrl": "/images/sneakers-4.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "4": {
+      "id": 5,
+      "title": "Future Rider",
+      "price": 9.55,
+      "imageUrl": "/images/sneakers-5.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "5": {
+      "id": 6,
+      "title": "Black Edition",
+      "price": 16.99,
+      "imageUrl": "/images/sneakers-6.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "6": {
+      "id": 7,
+      "title": "Orange Boomb Edition",
+      "price": 7.49,
+      "imageUrl": "/images/sneakers-7.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "7": {
+      "id": 8,
+      "title": "Nike Air Max 270",
+      "price": 15.6,
+      "imageUrl": "/images/sneakers-8.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "8": {
+      "id": 9,
+      "title": "Nike Air Force 1",
+      "price": 5.9,
+      "imageUrl": "/images/sneakers-9.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "9": {
+      "id": 10,
+      "title": "Adidas Ultraboost",
+      "price": 11.5,
+      "imageUrl": "/images/sneakers-10.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "10": {
+      "id": 11,
+      "title": "Puma Clyde All-Pro",
+      "price": 7.6,
+      "imageUrl": "/images/sneakers-11.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "11": {
+      "id": 12,
+      "title": "Converse Chuck Taylor All-Star",
+      "price": 13,
+      "imageUrl": "/images/sneakers-12.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "id": 17
+  },
+  {
+    "0": {
+      "id": 1,
+      "title": "Nike Blazer Mid Suede",
+      "price": 12.99,
+      "imageUrl": "/images/sneakers-1.jpg",
+      "isFavorite": true,
+      "favoriteId": 3,
+      "isAdded": false
+    },
+    "1": {
+      "id": 2,
+      "title": "Nike Air Max 270",
+      "price": 15.6,
+      "imageUrl": "/images/sneakers-2.jpg",
+      "isFavorite": true,
+      "favoriteId": 1,
+      "isAdded": false
+    },
+    "2": {
+      "id": 3,
+      "title": "Nike Blazer Mid Suede",
+      "price": 8.49,
+      "imageUrl": "/images/sneakers-3.jpg",
+      "isFavorite": true,
+      "favoriteId": 2,
+      "isAdded": false
+    },
+    "3": {
+      "id": 4,
+      "title": "Puma X Aka Boku Future Rider",
+      "price": 7.8,
+      "imageUrl": "/images/sneakers-4.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "4": {
+      "id": 5,
+      "title": "Future Rider",
+      "price": 9.55,
+      "imageUrl": "/images/sneakers-5.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "5": {
+      "id": 6,
+      "title": "Black Edition",
+      "price": 16.99,
+      "imageUrl": "/images/sneakers-6.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "6": {
+      "id": 7,
+      "title": "Orange Boomb Edition",
+      "price": 7.49,
+      "imageUrl": "/images/sneakers-7.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "7": {
+      "id": 8,
+      "title": "Nike Air Max 270",
+      "price": 15.6,
+      "imageUrl": "/images/sneakers-8.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "8": {
+      "id": 9,
+      "title": "Nike Air Force 1",
+      "price": 5.9,
+      "imageUrl": "/images/sneakers-9.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "9": {
+      "id": 10,
+      "title": "Adidas Ultraboost",
+      "price": 11.5,
+      "imageUrl": "/images/sneakers-10.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "10": {
+      "id": 11,
+      "title": "Puma Clyde All-Pro",
+      "price": 7.6,
+      "imageUrl": "/images/sneakers-11.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "11": {
+      "id": 12,
+      "title": "Converse Chuck Taylor All-Star",
+      "price": 13,
+      "imageUrl": "/images/sneakers-12.jpg",
+      "isFavorite": false,
+      "favoriteId": null,
+      "isAdded": false
+    },
+    "id": 18
+  },
+  {
+    "id": 19
+  }
+]
