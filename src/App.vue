@@ -19,7 +19,7 @@ const filters = reactive({
   sortBy: ''
 })
 
-function calcPriceAndTax(orders) {
+function calcPriceAndTax() {
   totalPrice.value = orders.value.reduce((total, sneaker) => {
     total = total + +sneaker.price.toFixed(2)
     return total
@@ -47,14 +47,17 @@ async function getOrders() {
       }
     })
     orders.value = ordersData
-    calcPriceAndTax(orders)
   } catch (err) {
     console.error(err)
+  } finally {
+    calcPriceAndTax()
   }
 }
 
 async function postDeleteOrder(sneaker) {
   try {
+    const { data: req } = await axios.get(url + `/orders?itemId=${sneaker.itemId}`);
+
     if (!sneaker.isAdded) {
       sneaker.isAdded = true
       const obj = { ...sneaker, item_id: sneaker.id }
@@ -62,20 +65,20 @@ async function postDeleteOrder(sneaker) {
       sneaker.orderId = data.id
       obj.orderId = data.id
       orders.value.push(obj)
-      calcPriceAndTax(orders)
     } else {
       sneaker.isAdded = false
-      orders.value = orders.value.filter((item) => item.id !== sneaker.id)
+      orders.value = orders.value.filter((item) => item.id !== req[0].id)
       await axios.delete(url + `/orders/${sneaker.orderId}`)
       sneaker.orderId = null
       sneakers.value = sneakers.value.map((val) => {
-        if (val.id === sneaker.item_id) val.isAdded = false;
+        if (val.id === sneaker.item_id) val.isAdded = false
         return val
       })
-      calcPriceAndTax(orders)
     }
   } catch (err) {
     console.error(err)
+  } finally {
+    calcPriceAndTax()
   }
 }
 
@@ -139,6 +142,7 @@ async function getSneakers(searchQuery, sortBy) {
     console.error(err)
   } finally {
     loadingSneakers.value = false
+    calcPriceAndTax()
   }
 }
 
