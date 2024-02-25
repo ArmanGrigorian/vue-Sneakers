@@ -21,7 +21,7 @@ const filters = reactive({
 
 function calcPriceAndTax(orders) {
   totalPrice.value = orders.value.reduce((total, sneaker) => {
-    total += sneaker.price
+    total = total + +sneaker.price.toFixed(2)
     return total
   }, 0)
   tax.value = ((totalPrice.value * percentage) / 100).toFixed(2)
@@ -56,18 +56,22 @@ async function getOrders() {
 async function postDeleteOrder(sneaker) {
   try {
     if (!sneaker.isAdded) {
-      const obj = { ...sneaker, item_id: sneaker.id }
-
       sneaker.isAdded = true
+      const obj = { ...sneaker, item_id: sneaker.id }
       const { data } = await axios.post(url + '/orders', obj)
       sneaker.orderId = data.id
+      obj.orderId = data.id
       orders.value.push(obj)
       calcPriceAndTax(orders)
     } else {
       sneaker.isAdded = false
+      orders.value = orders.value.filter((item) => item.id !== sneaker.id)
       await axios.delete(url + `/orders/${sneaker.orderId}`)
       sneaker.orderId = null
-      orders.value = orders.value.filter((item) => item.id !== sneaker.id)
+      sneakers.value = sneakers.value.map((val) => {
+        if (val.id === sneaker.item_id) val.isAdded = false;
+        return val
+      })
       calcPriceAndTax(orders)
     }
   } catch (err) {
@@ -99,11 +103,11 @@ async function getFavorites() {
 async function postDeleteFavorite(sneaker) {
   try {
     if (!sneaker.isFavorite) {
-      const obj = { ...sneaker, item_id: sneaker.id }
-
       sneaker.isFavorite = true
+      const obj = { ...sneaker, item_id: sneaker.id }
       const { data } = await axios.post(url + '/favorites', obj)
       sneaker.favoriteId = data.id
+      obj.favoriteId = data.id
       favorites.value.push(obj)
     } else {
       sneaker.isFavorite = false
@@ -128,7 +132,8 @@ async function getSneakers(searchQuery, sortBy) {
       ...obj,
       isFavorite: false,
       isAdded: false,
-      favoriteId: null
+      favoriteId: null,
+      orderId: null
     }))
   } catch (err) {
     console.error(err)
@@ -146,7 +151,7 @@ onBeforeMount(async () => {
 provide('tax', tax)
 provide('orders', orders)
 provide('filters', filters)
-provide('sneaker', sneakers)
+provide('sneakers', sneakers)
 provide('get-orders', getOrders)
 provide('total-price', totalPrice)
 provide('percentage', percentage)

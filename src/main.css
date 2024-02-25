@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.DrawerContentMask {
+.CartContentMask {
   -webkit-mask-image: linear-gradient(transparent, white 5%, white 95%, transparent);
   mask-image: linear-gradient(transparent, white 5%, white 95%, transparent);
 }

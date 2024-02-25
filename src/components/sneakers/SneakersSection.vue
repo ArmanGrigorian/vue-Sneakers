@@ -1,12 +1,11 @@
 <script setup>
 import { debounce } from '@/lib/debounce'
-import { inject, provide, watch } from 'vue'
+import { inject, watch } from 'vue'
 import SectionContent from './SectionContent.vue'
 import SectionTop from './SectionTop.vue'
 
 const filters = inject('filters')
 const getSneakers = inject('get-sneakers')
-const postDeleteFavorite = inject('post-delete-favorite')
 
 const handleSort = (e) => {
   filters.sortBy = e.target.value
@@ -19,7 +18,6 @@ watch(filters, () => {
   getSneakers(filters.searchQuery, filters.sortBy)
 })
 
-provide('post-delete-favorite', postDeleteFavorite)
 </script>
 
 <template>
