@@ -1,8 +1,6 @@
 <script setup>
 defineProps({
-  imageUrl: String,
-  title: String,
-  price: Number
+  sneaker: Object
 })
 </script>
 
@@ -18,14 +16,14 @@ defineProps({
       X
     </button>
 
-    <img :src="imageUrl" :alt="title + ' image'" class="w-[25%]" />
+    <img :src="sneaker.imageUrl" :alt="sneaker.title + ' image'" class="w-[25%]" />
 
     <div>
       <h5 class="text-customBlack text-base font-medium">
-        {{ title }}
+        {{ sneaker. title }}
       </h5>
       <p class="text-customGrey text-sm font-normal">
-        Price: <strong class="text-customBlack font-semibold">{{ price }} &dollar;;</strong>
+        Price: <strong class="text-customBlack font-semibold">{{ sneaker.price }} &dollar;;</strong>
       </p>
     </div>
   </div>

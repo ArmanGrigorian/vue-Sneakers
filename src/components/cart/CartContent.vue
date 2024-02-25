@@ -1,17 +1,13 @@
 <script setup>
+import { inject } from 'vue'
 import CartItem from './CartItem.vue'
+const orders = inject('orders')
 </script>
 
 <template>
   <div
     class="CArtContentMask flex flex-col justify-start items-center my-5 gap-5 h-[calc(100dvh-252px)] overflow-y-auto max-md:gap-4 max-md:my-4"
   >
-    <CartItem
-      image-url="/images/sneakers-1.jpg"
-      title="Nike Blazer Mid Suede"
-      :price="12.999"
-      :is-favorite="false"
-      :is-added="false"
-    />
+    <CartItem v-for="sneaker in orders" :key="sneaker.id" :sneaker="sneaker" />
   </div>
 </template>

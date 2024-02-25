@@ -1,19 +1,27 @@
+<script setup>
+import { inject } from 'vue'
+
+const percentage = inject('percentage')
+const totalPrice = inject('total-price')
+const tax = inject('tax')
+</script>
+
 <template>
   <div class="flex flex-col gap-4">
     <div>
       <p class="flex justify-between items-center gap-1 border-b border-dashed">
         <span>Total:</span>
-        <strong>21.498 &dollar;</strong>
+        <strong>{{ totalPrice }} &dollar;</strong>
       </p>
       <p class="mt-1 flex justify-between items-center gap-1 border-b border-dashed">
-        <span>Tax 5%:</span>
-        <strong>10.74 &dollar;</strong>
+        <span>Tax {{ percentage }}%:</span>
+        <strong>{{ tax }} &dollar;</strong>
       </p>
     </div>
 
     <button
       type="button"
-      title="Оформить заказ"
+      title="Order Now"
       class="relative bg-customGreen w-full h-14 rounded-lg text-customWhite text-lg font-medium transition opacity-85 hover:opacity-100 active:scale-95"
     >
       Order Now

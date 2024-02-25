@@ -26,7 +26,8 @@ defineProps({
         @input="handleSearch"
         type="text"
         name="search"
-        placeholder="Поиск..."
+        placeholder="Search..."
+        title="Search"
         class="w-full pl-7 pr-2 py-1 border rounded"
       />
     </div>

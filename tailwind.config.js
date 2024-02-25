@@ -17,6 +17,9 @@ export default {
       },
       backgroundImage: {
         headerBg: "url('/images/headerBackground.png')"
+      },
+      gradientColorStopPositions: {
+        70: '70%'
       }
     }
   },

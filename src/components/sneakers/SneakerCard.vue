@@ -5,16 +5,17 @@ defineProps({
   sneaker: Object
 })
 
-const postDeleteFromFavorites = inject('postDeleteFromFavorites')
+const postDeleteFavorite = inject('post-delete-favorite');
+const postDeleteOrder = inject('post-delete-order');
 
 </script>
 
 <template>
   <div
-    class="relative bg-customWhite border w-[232px] h-72 rounded-3xl shadow-md flex flex-col justify-between p-5 transition hover:-translate-y-1 hover:shadow-xl max-3xs:w-full"
+    class="relative bg-gradient-to-br from-70 from-customWhite to-70 to-customMainBg border w-[232px] h-72 rounded-3xl shadow-md flex flex-col justify-between p-5 transition hover:-translate-y-1 hover:shadow-xl max-3xs:w-full"
   >
     <button
-      @click="postDeleteFromFavorites(sneaker)"
+      @click="postDeleteFavorite(sneaker)"
       title="Add to favorites"
       type="button"
       class="absolute top-5 left-5 active:scale-95"
@@ -50,7 +51,7 @@ const postDeleteFromFavorites = inject('postDeleteFromFavorites')
         <strong class="text-customBlack font-semibold">{{ sneaker.price }} &dollar;</strong>
       </p>
 
-      <button @click="addToOrders" type="button" title="Add to orders" class="active:scale-95">
+      <button @click="postDeleteOrder(sneaker)" type="button" title="Add to orders" class="active:scale-95">
         <img
           v-if="!sneaker.isAdded"
           src="/icons/plus.svg"
