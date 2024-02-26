@@ -40,6 +40,8 @@ async function getOrders() {
         orderId: order.id
       }
     })
+    localStorage.setItem('sneakers', JSON.stringify(sneakers.value))
+    localStorage.setItem('orders', JSON.stringify(data))
   } catch (err) {
     console.error(err)
   }
@@ -67,6 +69,8 @@ async function postDeleteOrder(sneaker) {
     else deleteFromOrders(sneaker)
   } catch (err) {
     console.error(err)
+  } finally {
+    localStorage.setItem('sneakers', JSON.stringify(sneakers.value))
   }
 }
 
@@ -85,6 +89,8 @@ async function getFavorites() {
         favoriteId: favorite.id
       }
     })
+    localStorage.setItem('sneakers', JSON.stringify(sneakers.value))
+    localStorage.setItem('favorites', JSON.stringify(data))
   } catch (err) {
     console.error(err)
   }
@@ -108,6 +114,8 @@ async function postDeleteFavorite(sneaker) {
     else deleteFromFavorites(sneaker)
   } catch (err) {
     console.error(err)
+  } finally {
+    localStorage.setItem('sneakers', JSON.stringify(sneakers.value))
   }
 }
 
@@ -123,9 +131,14 @@ async function getSneakers(searchQuery, sortBy) {
       favoriteId: null,
       orderId: null
     }))
+    localStorage.setItem('sneakers', JSON.stringify(sneakers.value))
   } catch (err) {
     console.error(err)
-    sneakers.value = DATA
+    if (localStorage.getItem('sneakers')) {
+      sneakers.value = JSON.parse(localStorage.getItem('sneakers'))
+    } else {
+      sneakers.value = DATA
+    }
   } finally {
     loadingSneakers.value = false
   }

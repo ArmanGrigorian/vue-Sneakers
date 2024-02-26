@@ -8,7 +8,7 @@ export const sneakersAPI = {
   getAllSneakers: (searchQuery, sortBy, filters) => {
     const params = new URLSearchParams()
     if (searchQuery) params.append('title', '*' + filters.searchQuery)
-    if (sortBy) params.append('sortBy', filters.sortBy)
+		if (sortBy) params.append('sortBy', filters.sortBy)
     return instance.get(`/items?${params.toString()}`)
   },
 
