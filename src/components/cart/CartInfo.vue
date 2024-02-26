@@ -4,6 +4,8 @@ import { inject } from 'vue'
 const percentage = inject('percentage')
 const totalPrice = inject('total-price')
 const tax = inject('tax')
+
+const addOrders = inject('add-orders')
 </script>
 
 <template>
@@ -20,6 +22,7 @@ const tax = inject('tax')
     </div>
 
     <button
+      @click="addOrders"
       type="button"
       title="Order Now"
       class="relative bg-customGreen w-full h-14 rounded-lg text-customWhite text-lg font-medium transition opacity-85 hover:opacity-100 active:scale-95"

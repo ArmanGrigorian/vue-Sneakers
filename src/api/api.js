@@ -25,16 +25,24 @@ export const sneakersAPI = {
     return instance.delete(`/favorites/${sneaker.favoriteId}`)
 	},
 	
-	getAllOrders: () => {
-		return instance.get('/orders')
+	getCart: () => {
+		return instance.get('/cart')
 	},
 
-  addOrder: (sneaker) => {
+  addCartList: (sneaker) => {
     const obj = { ...sneaker, item_id: sneaker.id }
-    return instance.post('/orders', obj)
+    return instance.post('/cart', obj)
   },
 
-  deleteOrder: (sneaker) => {
-    return instance.delete(`/orders/${sneaker.orderId}`)
-  }
+  deleteCartList: (sneaker) => {
+    return instance.delete(`/cart/${sneaker.cartListId}`)
+	},
+
+	clearCart: () => {
+		return instance.patch('/cart', [])
+	},
+	
+	addOrders: (sneaker) => {
+		return instance.patch('/orders', sneaker)
+	}
 }

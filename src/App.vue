@@ -7,10 +7,9 @@ import MyHeader from './components/header/MyHeader.vue'
 import SneakersSection from './components/sneakers/SneakersSection.vue'
 
 const sneakers = ref([])
-const orders = computed(() => sneakers.value.filter((sneaker) => sneaker.isAdded))
-// const favorites = computed(() => sneakers.value.filter((sneaker) => sneaker.isFavorite))
+const cartList = computed(() => sneakers.value.filter((sneaker) => sneaker.isAdded))
 const totalPrice = computed(() =>
-  orders.value.reduce((total, sneaker) => total + +sneaker.price, 0)
+  cartList.value.reduce((total, sneaker) => total + +sneaker.price, 0)
 )
 const tax = computed(() => ((totalPrice.value * percentage.value) / 100).toFixed(2))
 const percentage = ref(5)
@@ -21,52 +20,67 @@ const filters = reactive({
   sortBy: ''
 })
 
+// orders
+async function addOrders() {
+  try {
+    await sneakersAPI.addOrders(cartList.value)
+    await sneakersAPI.clearCart()
+    sneakers.value = sneakers.value.map((sneaker) => {
+      if (sneaker.isAdded) sneaker.isAdded = false
+      return sneaker
+    })
+    localStorage.setItem('sneakers', JSON.stringify(sneakers.value))
+    localStorage.setItem('cartList', JSON.stringify([]))
+  } catch (err) {
+    console.error(err)
+  }
+}
+// cart
 function toggleCart() {
   cartIsOpen.value = !cartIsOpen.value
 }
-
-async function getOrders() {
+async function getCartList() {
   try {
-    const { data } = await sneakersAPI.getAllOrders()
+    const { data } = await sneakersAPI.getCart()
 
     sneakers.value = sneakers.value.map((sneaker) => {
-      const order = data.find((order) => order.item_id === sneaker.id)
+      const cartList = data.find((val) => val.item_id === sneaker.id)
 
-      if (!order) return sneaker
+      if (!cartList) return sneaker
 
       return {
         ...sneaker,
         isAdded: true,
-        orderId: order.id
+        cartListId: cartList.id
       }
     })
     localStorage.setItem('sneakers', JSON.stringify(sneakers.value))
-    localStorage.setItem('orders', JSON.stringify(data))
+    localStorage.setItem('cartList', JSON.stringify(data))
   } catch (err) {
     console.error(err)
   }
 }
 
-async function addToOrders(sneaker) {
+async function addToCartList(sneaker) {
   sneaker.isAdded = true
-  const { data } = await sneakersAPI.addOrder(sneaker)
-  sneaker.orderId = data.id
+  const { data } = await sneakersAPI.addCartList(sneaker)
+  sneaker.cartListId = data.id
 }
 
-async function deleteFromOrders(sneaker) {
+async function deleteFromCartList(sneaker) {
   sneaker.isAdded = false
-  await sneakersAPI.deleteOrder(sneaker)
-  sneaker.orderId = null
+  await sneakersAPI.deleteCartList(sneaker)
+  sneaker.cartListId = null
   sneakers.value = sneakers.value.map((val) => {
     if (val.id === sneaker.item_id) val.isAdded = false
     return val
   })
 }
 
-async function postDeleteOrder(sneaker) {
+async function manageCartList(sneaker) {
   try {
-    if (!sneaker.isAdded) addToOrders(sneaker)
-    else deleteFromOrders(sneaker)
+    if (!sneaker.isAdded) addToCartList(sneaker)
+    else deleteFromCartList(sneaker)
   } catch (err) {
     console.error(err)
   } finally {
@@ -74,6 +88,7 @@ async function postDeleteOrder(sneaker) {
   }
 }
 
+// favorites
 async function getFavorites() {
   try {
     const { data } = await sneakersAPI.getAllFavorites()
@@ -108,7 +123,7 @@ async function deleteFromFavorites(sneaker) {
   sneaker.favoriteId = null
 }
 
-async function postDeleteFavorite(sneaker) {
+async function manageFavorite(sneaker) {
   try {
     if (!sneaker.isFavorite) addToFavorites(sneaker)
     else deleteFromFavorites(sneaker)
@@ -119,6 +134,7 @@ async function postDeleteFavorite(sneaker) {
   }
 }
 
+// sneakers
 async function getSneakers(searchQuery, sortBy) {
   try {
     loadingSneakers.value = true
@@ -129,7 +145,7 @@ async function getSneakers(searchQuery, sortBy) {
       isFavorite: false,
       isAdded: false,
       favoriteId: null,
-      orderId: null
+      cartListId: null
     }))
     localStorage.setItem('sneakers', JSON.stringify(sneakers.value))
   } catch (err) {
@@ -147,22 +163,23 @@ async function getSneakers(searchQuery, sortBy) {
 onBeforeMount(async () => {
   await getSneakers()
   await getFavorites()
-  await getOrders()
+  await getCartList()
 })
 
 provide('tax', tax)
-provide('orders', orders)
 provide('filters', filters)
 provide('sneakers', sneakers)
-provide('get-orders', getOrders)
-provide('total-price', totalPrice)
+provide('cart-list', cartList)
+provide('add-orders', addOrders)
 provide('percentage', percentage)
+provide('total-price', totalPrice)
 provide('toggle-cart', toggleCart)
 provide('get-sneakers', getSneakers)
+provide('get-cart-list', getCartList)
 provide('get-favorites', getFavorites)
+provide('manage-favorite', manageFavorite)
+provide('manage-cart-list', manageCartList)
 provide('loading-sneakers', loadingSneakers)
-provide('post-delete-order', postDeleteOrder)
-provide('post-delete-favorite', postDeleteFavorite)
 </script>
 
 <template>

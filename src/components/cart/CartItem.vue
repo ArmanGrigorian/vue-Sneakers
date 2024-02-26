@@ -4,7 +4,7 @@ defineProps({
   sneaker: Object
 })
 
-const postDeleteOrder = inject('post-delete-order')
+const manageCartList = inject('manage-cart-list')
 </script>
 
 <template>
@@ -12,7 +12,7 @@ const postDeleteOrder = inject('post-delete-order')
     class="relative flex flex-col justify-center items-start gap-2 bg-customWhite border rounded-xl shadow-md p-3 transition hover:-translate-y-[2px] hover:shadow-xl max-3xs:w-full"
   >
     <button
-      @click="postDeleteOrder(sneaker)"
+      @click="manageCartList(sneaker)"
       type="button"
       title="remove from cart"
       class="absolute top-3 right-3 w-10 h-10 border border-neutral-300 rounded-md shadow font-bold text-neutral-400 hover:text-customWhite hover:bg-red-700 active:scale-95"
