@@ -9,12 +9,16 @@ import SneakersSection from './components/sneakers/SneakersSection.vue'
 const sneakers = ref([])
 const cartList = computed(() => sneakers.value.filter((sneaker) => sneaker.isAdded))
 const totalPrice = computed(() =>
-  cartList.value.reduce((total, sneaker) => total + +sneaker.price, 0)
+  cartList.value.reduce((total, sneaker) => {
+    total = (+total +sneaker.price).toFixed(2)
+    return total
+  }, 0)
 )
 const tax = computed(() => ((totalPrice.value * percentage.value) / 100).toFixed(2))
 const percentage = ref(5)
 const cartIsOpen = ref(false)
 const loadingSneakers = ref(false)
+const orderStatus = ref(true)
 const filters = reactive({
   searchQuery: '',
   sortBy: ''
@@ -23,6 +27,7 @@ const filters = reactive({
 // orders
 async function addOrders() {
   try {
+    orderStatus.value = false
     await sneakersAPI.addOrders(cartList.value)
     await sneakersAPI.clearCart()
     sneakers.value = sneakers.value.map((sneaker) => {
@@ -31,8 +36,10 @@ async function addOrders() {
     })
     localStorage.setItem('sneakers', JSON.stringify(sneakers.value))
     localStorage.setItem('cartList', JSON.stringify([]))
+    orderStatus.value = true
   } catch (err) {
     console.error(err)
+    alert('OOPS! Something went wrong')
   }
 }
 // cart
@@ -172,8 +179,9 @@ provide('sneakers', sneakers)
 provide('cart-list', cartList)
 provide('add-orders', addOrders)
 provide('percentage', percentage)
-provide('total-price', totalPrice)
 provide('toggle-cart', toggleCart)
+provide('total-price', totalPrice)
+provide('order-status', orderStatus)
 provide('get-sneakers', getSneakers)
 provide('get-cart-list', getCartList)
 provide('get-favorites', getFavorites)

@@ -6,6 +6,7 @@ const totalPrice = inject('total-price')
 const tax = inject('tax')
 
 const addOrders = inject('add-orders')
+const orderStatus = inject('order-status')
 </script>
 
 <template>
@@ -22,10 +23,11 @@ const addOrders = inject('add-orders')
     </div>
 
     <button
+      :disabled="orderStatus ? false : true"
       @click="addOrders"
       type="button"
       title="Order Now"
-      class="relative bg-customGreen w-full h-14 rounded-lg text-customWhite text-lg font-medium transition opacity-85 hover:opacity-100 active:scale-95"
+      :class="`${!orderStatus ? 'cursor-wait opacity-70 active:scale-100' : ''} relative bg-customGreen w-full h-14 rounded-lg text-customWhite shadow-xl text-lg font-medium transition opacity-85 hover:opacity-100 active:scale-95`"
     >
       Order Now
       <img
