@@ -10,7 +10,7 @@ defineProps({
   <img :src="iconUrl" :alt="title + 'image'" class="w-12" />
 
   <div class="text-center">
-    <h2 class="text-2xl font-semibold">{{ title }}</h2>
+    <h2 class="text-2xl font-semibold max-md:text-xl">{{ title }}</h2>
     <p class="text-center text-lg text-neutral-500 font-normal">
       {{ text }}
     </p>

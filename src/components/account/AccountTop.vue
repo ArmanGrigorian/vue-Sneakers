@@ -5,7 +5,7 @@ const { clearPurchaseHistory } = inject('state')
 
 <template>
   <div class="flex justify-between items-center gap-2 max-md:flex-col">
-    <h2 class="text-customBlack text-3xl font-bold">Purchase history</h2>
+    <h2 class="text-customBlack text-3xl font-bold max-md:text-2xl">Purchase history</h2>
     <button
       @click="clearPurchaseHistory"
       type="button"

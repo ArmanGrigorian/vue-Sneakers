@@ -15,7 +15,7 @@ const { orders } = inject('state')
       <AccountContent />
     </div>
 
-    <div class="min-h-[calc(100dvh-633px)] flex flex-col justify-center items-center gap-2" v-else>
+    <div class="min-h-[calc(100dvh-633px)] flex flex-col justify-center items-center gap-2 max-2xs:gap-1 max-2xs:pt-4" v-else>
       <InfoBlock
         title="You have no orders"
         text="Are you poor? Place at least one order."

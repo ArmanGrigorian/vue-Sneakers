@@ -13,6 +13,7 @@ export default {
         customGreen: '#9DD458'
       },
       screens: {
+        "2xs": "384px",
         '3xs': '320px'
       },
       backgroundImage: {

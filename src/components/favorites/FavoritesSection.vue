@@ -8,7 +8,7 @@ const { favorites } = inject('state')
 
 <template>
   <section class="p-5 max-md:p-4">
-    <h2 class="text-customBlack text-3xl font-bold">Favorites</h2>
+    <h2 class="text-customBlack text-3xl font-bold max-md:text-2xl">Favorites</h2>
 
     <div v-if="favorites.length">
       <FavoritesContent />

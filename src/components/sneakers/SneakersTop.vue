@@ -6,7 +6,7 @@ defineProps({
 </script>
 <template>
   <div class="flex justify-between items-center gap-2 max-md:flex-col">
-    <h2 class="text-customBlack text-3xl font-bold">All sneakers</h2>
+    <h2 class="text-customBlack text-3xl font-bold max-md:text-2xl">All sneakers</h2>
 
     <div class="flex items-center gap-5 max-md:w-full max-md:flex-col">
       <div class="px-2 py-1 border rounded max-md:w-full">
