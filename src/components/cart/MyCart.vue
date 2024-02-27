@@ -1,11 +1,11 @@
 <script setup>
 import { inject } from 'vue'
-import EmptyCart from './EmptyCart.vue'
 import CartContent from './CartContent.vue'
 import CartHeading from './CartHeading.vue'
 import CartInfo from './CartInfo.vue'
+import EmptyCart from './EmptyCart.vue'
 
-const cartList = inject('cart-list')
+const { cartList } = inject('state')
 </script>
 
 <template>
@@ -20,7 +20,7 @@ const cartList = inject('cart-list')
         class="flex flex-col justify-center items-center gap-5 h-[calc(100dvh-48px)] max-md:gap-4"
         v-else
       >
-        <EmptyCart/>
+        <EmptyCart />
       </div>
     </div>
   </div>

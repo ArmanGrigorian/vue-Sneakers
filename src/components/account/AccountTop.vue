@@ -1,6 +1,6 @@
 <script setup>
 import { inject } from 'vue'
-const clearPurchaseHistory = inject('clear-purchase-history')
+const { clearPurchaseHistory } = inject('state')
 </script>
 
 <template>

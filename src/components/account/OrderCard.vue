@@ -5,7 +5,7 @@ defineProps({
   sneaker: Object
 })
 
-const deleteOrders = inject('delete-orders')
+const { deleteOrders } = inject('state')
 </script>
 
 <template>

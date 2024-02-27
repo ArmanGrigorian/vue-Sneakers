@@ -2,7 +2,7 @@
 import { inject } from 'vue'
 import SneakerCard from './SneakerCard.vue'
 
-const sneakers = inject('sneakers')
+const { sneakers } = inject('state')
 </script>
 
 <template>

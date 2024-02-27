@@ -20,6 +20,7 @@ const percentage = ref(5)
 const cartIsOpen = ref(false)
 const loadingSneakers = ref(false)
 const orderStatus = ref(true)
+const cartInfoIdx = ref(0)
 const filters = reactive({
   searchQuery: '',
   sortBy: ''
@@ -58,6 +59,7 @@ async function addOrders() {
     })
     await sneakersAPI.addOrders(cartList.value)
     await sneakersAPI.clearCart()
+    cartInfoIdx.value = 1
     sneakers.value = sneakers.value.map((sneaker) => {
       if (sneaker.isAdded) {
         sneaker.isAdded = false
@@ -71,10 +73,14 @@ async function addOrders() {
     })
     localStorage.setItem('sneakers', JSON.stringify(sneakers.value))
     localStorage.setItem('cartList', JSON.stringify([]))
-    orderStatus.value = true
   } catch (err) {
     console.error(err)
     alert('OOPS! Something went wrong')
+  } finally {
+    orderStatus.value = true
+    setTimeout(() => {
+      cartInfoIdx.value = 0
+    }, 1000)
   }
 }
 
@@ -254,25 +260,28 @@ onBeforeMount(async () => {
   await getOrders()
 })
 
-provide('tax', tax)
-provide('orders', orders)
-provide('filters', filters)
-provide('sneakers', sneakers)
-provide('cart-list', cartList)
-provide('favorites', favorites)
-provide('add-orders', addOrders)
-provide('percentage', percentage)
-provide('toggle-cart', toggleCart)
-provide('total-price', totalPrice)
-provide('order-status', orderStatus)
-provide('get-sneakers', getSneakers)
-provide('get-cart-list', getCartList)
-provide('get-favorites', getFavorites)
-provide('delete-orders', deleteOrders)
-provide('manage-favorite', manageFavorite)
-provide('manage-cart-list', manageCartList)
-provide('loading-sneakers', loadingSneakers)
-provide('clear-purchase-history', clearPurchaseHistory)
+provide('state', {
+  tax,
+  orders,
+  filters,
+  sneakers,
+  cartList,
+  favorites,
+  addOrders,
+  percentage,
+  toggleCart,
+  totalPrice,
+  orderStatus,
+  cartInfoIdx,
+  getSneakers,
+  getCartList,
+  getFavorites,
+  deleteOrders,
+  manageFavorite,
+  manageCartList,
+  loadingSneakers,
+  clearPurchaseHistory
+})
 </script>
 
 <template>

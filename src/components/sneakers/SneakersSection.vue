@@ -4,8 +4,7 @@ import { inject, watch } from 'vue'
 import SneakersContent from './SneakersContent.vue'
 import SneakersTop from './SneakersTop.vue'
 
-const filters = inject('filters')
-const getSneakers = inject('get-sneakers')
+const { filters, getSneakers } = inject('state')
 
 const handleSort = (e) => {
   filters.sortBy = e.target.value
@@ -17,7 +16,6 @@ const handleSearch = debounce((e) => {
 watch(filters, () => {
   getSneakers(filters.searchQuery, filters.sortBy)
 })
-
 </script>
 
 <template>

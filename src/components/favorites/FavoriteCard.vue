@@ -4,8 +4,7 @@ defineProps({
   sneaker: Object
 })
 
-const manageFavorite = inject('manage-favorite')
-const manageCartList = inject('manage-cart-list')
+const { manageFavorite, manageCartList } = inject('state')
 </script>
 
 <template>

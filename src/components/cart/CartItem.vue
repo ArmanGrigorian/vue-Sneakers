@@ -5,12 +5,12 @@ defineProps({
   sneaker: Object
 })
 
-const manageCartList = inject('manage-cart-list')
+const { manageCartList } = inject('state')
 </script>
 
 <template>
   <div
-    class="relative w-[90%]  flex flex-col justify-center items-start gap-2 bg-customWhite border rounded-xl shadow-md p-3 transition hover:-translate-y-[2px] hover:shadow-xl max-3xs:w-full"
+    class="relative w-[90%] flex flex-col justify-center items-start gap-2 bg-customWhite border rounded-xl shadow-md p-3 transition hover:-translate-y-[2px] hover:shadow-xl max-3xs:w-full"
   >
     <button
       @click="manageCartList(sneaker)"

@@ -2,7 +2,7 @@
 import { inject } from 'vue'
 import CartItem from './CartItem.vue'
 
-const cartList = inject('cart-list')
+const { cartList } = inject('state')
 </script>
 
 <template>
@@ -12,5 +12,4 @@ const cartList = inject('cart-list')
   >
     <CartItem v-for="sneaker in cartList" :key="sneaker.id" :sneaker="sneaker" />
   </div>
-  
 </template>

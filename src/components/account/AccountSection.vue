@@ -1,15 +1,15 @@
 <script setup>
 import { inject } from 'vue'
-import AccountTop from './AccountTop.vue'
-import AccountContent from './AccountContent.vue'
 import InfoBlock from '../InfoBlock.vue'
+import AccountContent from './AccountContent.vue'
+import AccountTop from './AccountTop.vue'
 
-const orders = inject('orders')
+const { orders } = inject('state')
 </script>
 
 <template>
   <section class="p-5 max-md:p-4">
-    <AccountTop/>
+    <AccountTop />
 
     <div v-if="orders.length">
       <AccountContent />

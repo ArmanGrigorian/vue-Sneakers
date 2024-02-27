@@ -6,9 +6,7 @@ defineProps({
   sneaker: Object
 })
 
-const manageFavorite = inject('manage-favorite');
-const manageCartList = inject('manage-cart-list');
-
+const { manageFavorite, manageCartList } = inject('state')
 </script>
 
 <template>
@@ -52,7 +50,12 @@ const manageCartList = inject('manage-cart-list');
         <strong class="text-customBlack font-semibold">{{ sneaker.price }} &dollar;</strong>
       </p>
 
-      <button @click="manageCartList(sneaker)" type="button" title="Add to orders" class="active:scale-95">
+      <button
+        @click="manageCartList(sneaker)"
+        type="button"
+        title="Add to orders"
+        class="active:scale-95"
+      >
         <img
           v-if="!sneaker.isAdded"
           src="/icons/plus.svg"

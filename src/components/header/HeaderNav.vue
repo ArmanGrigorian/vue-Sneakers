@@ -1,8 +1,7 @@
 <script setup>
 import { inject } from 'vue'
 
-const toggleCart = inject('toggle-cart')
-const totalPrice = inject('total-price')
+const { toggleCart, totalPrice } = inject('state')
 </script>
 
 <template>
@@ -19,7 +18,7 @@ const totalPrice = inject('total-price')
       <li
         class="select-none transition opacity-75 hover:opacity-100 active:scale-95 max-3xs:w-full"
       >
-        <button type="button">
+        <button type="button" class="flex">
           <router-link to="/favorites" class="flex items-center gap-1">
             <img src="/icons/heart.svg" alt="heart svg" class="w-5" />
             <span class="text-customGrey text-sm font-medium">Favorites</span>
@@ -29,7 +28,7 @@ const totalPrice = inject('total-price')
       <li
         class="select-none transition opacity-75 hover:opacity-100 active:scale-95 max-3xs:w-full"
       >
-        <button type="button">
+        <button type="button" class="flex">
           <router-link to="/account" class="flex items-center gap-1">
             <img src="/icons/profile.svg" alt="profile svg" class="w-5" />
             <span class="text-customGrey text-sm font-medium">Account</span>

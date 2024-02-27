@@ -1,9 +1,9 @@
 <script setup>
 import { inject } from 'vue'
-import FavoritesContent from './FavoritesContent.vue'
 import InfoBlock from '../InfoBlock.vue'
+import FavoritesContent from './FavoritesContent.vue'
 
-const favorites = inject('favorites')
+const { favorites } = inject('state')
 </script>
 
 <template>
