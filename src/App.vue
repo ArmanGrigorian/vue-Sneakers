@@ -4,13 +4,12 @@ import { DATA } from '../DATA.js'
 import { sneakersAPI } from './api/api.js'
 import MyCart from './components/cart/MyCart.vue'
 import MyHeader from './components/header/MyHeader.vue'
-import SneakersSection from './components/sneakers/SneakersSection.vue'
 
 const sneakers = ref([])
 const cartList = computed(() => sneakers.value.filter((sneaker) => sneaker.isAdded))
 const totalPrice = computed(() =>
   cartList.value.reduce((total, sneaker) => {
-    total = (+total +sneaker.price).toFixed(2)
+    total = (+total + sneaker.price).toFixed(2)
     return total
   }, 0)
 )
@@ -194,6 +193,6 @@ provide('loading-sneakers', loadingSneakers)
   <MyCart v-if="cartIsOpen" />
   <main class="max-w-7xl mx-auto bg-customWhite rounded-xl shadow-xl">
     <MyHeader />
-    <SneakersSection />
+    <router-view></router-view>
   </main>
 </template>
