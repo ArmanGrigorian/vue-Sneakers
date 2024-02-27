@@ -1,6 +1,6 @@
 <script setup>
 import { inject } from 'vue'
-import InfoBlock from '../InfoBlock.vue'
+import EmptyCart from './EmptyCart.vue'
 import CartContent from './CartContent.vue'
 import CartHeading from './CartHeading.vue'
 import CartInfo from './CartInfo.vue'
@@ -20,11 +20,7 @@ const cartList = inject('cart-list')
         class="flex flex-col justify-center items-center gap-5 h-[calc(100dvh-48px)] max-md:gap-4"
         v-else
       >
-        <InfoBlock
-          title="Cart is empty"
-          text="Add at least one pair of sneakers to complete your order."
-          iconUrl="/icons/package-icon.png"
-        />
+        <EmptyCart/>
       </div>
     </div>
   </div>

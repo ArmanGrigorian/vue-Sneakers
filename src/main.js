@@ -1,9 +1,9 @@
+import App from './App.vue'
 import './main.css'
 
 import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
 import { createApp } from 'vue'
-import { createRouter, createWebHashHistory } from 'vue-router'
-import App from './App.vue'
+import { createRouter, createWebHistory } from 'vue-router'
 import AccountPageVue from './pages/AccountPage.vue'
 import FavoritesPageVue from './pages/FavoritesPage.vue'
 import HomePageVue from './pages/HomePage.vue'
@@ -29,7 +29,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes: routes
 })
 

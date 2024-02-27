@@ -6,6 +6,8 @@ import MyCart from './components/cart/MyCart.vue'
 import MyHeader from './components/header/MyHeader.vue'
 
 const sneakers = ref([])
+const orders = computed(() => sneakers.value.filter((sneaker) => sneaker.isOrdered))
+const favorites = computed(() => sneakers.value.filter((sneaker) => sneaker.isFavorite))
 const cartList = computed(() => sneakers.value.filter((sneaker) => sneaker.isAdded))
 const totalPrice = computed(() =>
   cartList.value.reduce((total, sneaker) => {
@@ -24,13 +26,47 @@ const filters = reactive({
 })
 
 // orders
+async function getOrders() {
+  try {
+    const { data } = await sneakersAPI.getOrders()
+
+    sneakers.value = sneakers.value.map((sneaker) => {
+      const orders = data.find((val) => val.itemId === sneaker.id)
+
+      if (!orders) return sneaker
+
+      return {
+        ...sneaker,
+        isOrdered: true,
+        orderId: orders.id,
+        orderDate: orders.orderDate
+      }
+    })
+    localStorage.setItem('sneakers', JSON.stringify(sneakers.value))
+    localStorage.setItem('orders', JSON.stringify(data))
+  } catch (err) {
+    console.error(err)
+  }
+}
 async function addOrders() {
   try {
     orderStatus.value = false
+    cartList.value.forEach((val) => {
+      val.isOrdered = true
+      val.orderId = val.id
+      val.orderDate = new Date().toLocaleString()
+    })
     await sneakersAPI.addOrders(cartList.value)
     await sneakersAPI.clearCart()
     sneakers.value = sneakers.value.map((sneaker) => {
-      if (sneaker.isAdded) sneaker.isAdded = false
+      if (sneaker.isAdded) {
+        sneaker.isAdded = false
+        sneaker.cartListId = null
+        sneaker.isOrdered = true
+        sneaker.orderId = sneaker.id
+        sneaker.orderDate = new Date().toLocaleString()
+        return sneaker
+      }
       return sneaker
     })
     localStorage.setItem('sneakers', JSON.stringify(sneakers.value))
@@ -41,6 +77,37 @@ async function addOrders() {
     alert('OOPS! Something went wrong')
   }
 }
+
+async function deleteOrders(sneaker) {
+  try {
+    await sneakersAPI.deleteOrder(sneaker)
+    sneaker.isOrdered = false
+    sneaker.orderId = null
+    sneaker.orderDate = null
+    localStorage.setItem('sneakers', JSON.stringify(sneakers.value))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+async function clearPurchaseHistory() {
+  try {
+    await sneakersAPI.clearOrdersHistory()
+    sneakers.value = sneakers.value.map((sneaker) => {
+      if (sneaker.isOrdered) {
+        sneaker.isOrdered = false
+        sneaker.orderId = null
+        sneaker.orderDate = null
+        return sneaker
+      }
+      return sneaker
+    })
+    localStorage.setItem('sneakers', JSON.stringify(sneakers.value))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 // cart
 function toggleCart() {
   cartIsOpen.value = !cartIsOpen.value
@@ -50,7 +117,7 @@ async function getCartList() {
     const { data } = await sneakersAPI.getCart()
 
     sneakers.value = sneakers.value.map((sneaker) => {
-      const cartList = data.find((val) => val.item_id === sneaker.id)
+      const cartList = data.find((val) => val.itemId === sneaker.id)
 
       if (!cartList) return sneaker
 
@@ -74,13 +141,17 @@ async function addToCartList(sneaker) {
 }
 
 async function deleteFromCartList(sneaker) {
-  sneaker.isAdded = false
-  await sneakersAPI.deleteCartList(sneaker)
-  sneaker.cartListId = null
-  sneakers.value = sneakers.value.map((val) => {
-    if (val.id === sneaker.item_id) val.isAdded = false
-    return val
-  })
+  try {
+    sneaker.isAdded = false
+    await sneakersAPI.deleteCartList(sneaker)
+    sneaker.cartListId = null
+    sneakers.value = sneakers.value.map((val) => {
+      if (val.id === sneaker.itemId) val.isAdded = false
+      return val
+    })
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 async function manageCartList(sneaker) {
@@ -100,7 +171,7 @@ async function getFavorites() {
     const { data } = await sneakersAPI.getAllFavorites()
 
     sneakers.value = sneakers.value.map((sneaker) => {
-      const favorite = data.find((val) => val.item_id === sneaker.id)
+      const favorite = data.find((val) => val.itemId === sneaker.id)
 
       if (!favorite) return sneaker
 
@@ -118,15 +189,23 @@ async function getFavorites() {
 }
 
 async function addToFavorites(sneaker) {
-  sneaker.isFavorite = true
-  const { data } = await sneakersAPI.addFavorite(sneaker)
-  sneaker.favoriteId = data.id
+  try {
+    sneaker.isFavorite = true
+    const { data } = await sneakersAPI.addFavorite(sneaker)
+    sneaker.favoriteId = data.id
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 async function deleteFromFavorites(sneaker) {
-  sneaker.isFavorite = false
-  await sneakersAPI.deleteFavorite(sneaker)
-  sneaker.favoriteId = null
+  try {
+    sneaker.isFavorite = false
+    await sneakersAPI.deleteFavorite(sneaker)
+    sneaker.favoriteId = null
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 async function manageFavorite(sneaker) {
@@ -150,8 +229,10 @@ async function getSneakers(searchQuery, sortBy) {
       ...obj,
       isFavorite: false,
       isAdded: false,
+      isOrdered: false,
       favoriteId: null,
-      cartListId: null
+      cartListId: null,
+      orderId: null
     }))
     localStorage.setItem('sneakers', JSON.stringify(sneakers.value))
   } catch (err) {
@@ -170,12 +251,15 @@ onBeforeMount(async () => {
   await getSneakers()
   await getFavorites()
   await getCartList()
+  await getOrders()
 })
 
 provide('tax', tax)
+provide('orders', orders)
 provide('filters', filters)
 provide('sneakers', sneakers)
 provide('cart-list', cartList)
+provide('favorites', favorites)
 provide('add-orders', addOrders)
 provide('percentage', percentage)
 provide('toggle-cart', toggleCart)
@@ -184,9 +268,11 @@ provide('order-status', orderStatus)
 provide('get-sneakers', getSneakers)
 provide('get-cart-list', getCartList)
 provide('get-favorites', getFavorites)
+provide('delete-orders', deleteOrders)
 provide('manage-favorite', manageFavorite)
 provide('manage-cart-list', manageCartList)
 provide('loading-sneakers', loadingSneakers)
+provide('clear-purchase-history', clearPurchaseHistory)
 </script>
 
 <template>

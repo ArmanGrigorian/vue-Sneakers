@@ -1,25 +1,22 @@
 <script setup>
 import { inject } from 'vue'
-
 defineProps({
-  imageUrl: String,
   sneaker: Object
 })
 
-const manageFavorite = inject('manage-favorite');
-const manageCartList = inject('manage-cart-list');
-
+const manageFavorite = inject('manage-favorite')
+const manageCartList = inject('manage-cart-list')
 </script>
 
 <template>
   <div
-    class="relative bg-gradient-to-br from-70 from-customWhite to-70 to-customMainBg border w-[232px] h-72 rounded-3xl shadow-md flex flex-col justify-between p-5 transition hover:-translate-y-1 hover:shadow-xl max-3xs:w-full"
+    class="relative border w-9/12 rounded-3xl shadow-md flex flex-col gap-4 p-5 transition hover:-translate-y-1 hover:shadow-xl max-3xs:w-full"
   >
     <button
       @click="manageFavorite(sneaker)"
       title="Add to favorites"
       type="button"
-      class="absolute top-5 left-5 active:scale-95"
+      class="absolute top-5 right-5 active:scale-95"
     >
       <img
         v-if="!sneaker.isFavorite"
@@ -41,18 +38,25 @@ const manageCartList = inject('manage-cart-list');
         :alt="sneaker.title + ' image'"
         class="block w-full max-h-40 object-contain object-top"
       />
-      <h5 class="text-customBlack text-base font-semibold">
+      <h5
+        class="text-customBlack text-lg text-center font-semibold underline underline-offset-4 decoration-2"
+      >
         {{ sneaker.title }}
       </h5>
     </div>
 
     <div class="flex justify-between items-center gap-1">
-      <p class="text-customGrey text-sm">
+      <p class="text-customGrey text-base font-medium">
         Price: <br />
-        <strong class="text-customBlack font-semibold">{{ sneaker.price }} &dollar;</strong>
+        <strong class="text-customGreen font-semibold">{{ sneaker.price }} &dollar;</strong>
       </p>
 
-      <button @click="manageCartList(sneaker)" type="button" title="Add to orders" class="active:scale-95">
+      <button
+        @click="manageCartList(sneaker)"
+        type="button"
+        title="Add to orders"
+        class="active:scale-95"
+      >
         <img
           v-if="!sneaker.isAdded"
           src="/icons/plus.svg"

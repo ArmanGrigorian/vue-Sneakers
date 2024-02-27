@@ -11,38 +11,39 @@ export const sneakersAPI = {
 		if (sortBy) params.append('sortBy', filters.sortBy)
     return instance.get(`/items?${params.toString()}`)
   },
-
   getAllFavorites: () => {
     return instance.get('/favorites')
   },
-
   addFavorite: (sneaker) => {
     const obj = { ...sneaker, item_id: sneaker.id }
     return instance.post('/favorites', obj)
   },
-
   deleteFavorite: (sneaker) => {
     return instance.delete(`/favorites/${sneaker.favoriteId}`)
 	},
-	
 	getCart: () => {
 		return instance.get('/cart')
 	},
-
   addCartList: (sneaker) => {
     const obj = { ...sneaker, item_id: sneaker.id }
     return instance.post('/cart', obj)
   },
-
   deleteCartList: (sneaker) => {
-    return instance.delete(`/cart/${sneaker.cartListId}`)
-	},
-
+    return instance.delete(`/cart/${sneaker.cartListId}`);
+  },
 	clearCart: () => {
-		return instance.patch('/cart', [])
-	},
-	
-	addOrders: (sneaker) => {
+    return instance.patch("/cart", []);
+  },
+  getOrders: () => {
+    return instance.get('/orders');
+  },
+  addOrders: (sneaker) => {
 		return instance.patch('/orders', sneaker)
-	}
+  },
+  deleteOrder: (sneaker) => {
+    return instance.delete(`/orders/${sneaker.orderId}`)
+  },
+  clearOrdersHistory: () => {
+    return instance.patch('/orders', [])
+  },
 }

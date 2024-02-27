@@ -4,7 +4,6 @@ import { inject } from 'vue'
 const percentage = inject('percentage')
 const totalPrice = inject('total-price')
 const tax = inject('tax')
-
 const addOrders = inject('add-orders')
 const orderStatus = inject('order-status')
 </script>

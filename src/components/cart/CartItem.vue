@@ -1,5 +1,6 @@
 <script setup>
 import { inject } from 'vue'
+
 defineProps({
   sneaker: Object
 })

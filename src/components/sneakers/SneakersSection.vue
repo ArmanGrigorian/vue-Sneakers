@@ -1,8 +1,8 @@
 <script setup>
 import { debounce } from '@/lib/debounce'
 import { inject, watch } from 'vue'
-import SectionContent from './SectionContent.vue'
-import SectionTop from './SectionTop.vue'
+import SneakersContent from './SneakersContent.vue'
+import SneakersTop from './SneakersTop.vue'
 
 const filters = inject('filters')
 const getSneakers = inject('get-sneakers')
@@ -22,7 +22,7 @@ watch(filters, () => {
 
 <template>
   <section class="p-5 max-md:p-4">
-    <SectionTop :handle-search="handleSearch" :handle-sort="handleSort" />
-    <SectionContent />
+    <SneakersTop :handle-search="handleSearch" :handle-sort="handleSort" />
+    <SneakersContent />
   </section>
 </template>

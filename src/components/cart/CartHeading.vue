@@ -1,5 +1,6 @@
 <script setup>
 import { inject } from 'vue'
+
 const toggleCart = inject('toggle-cart')
 const cartList = inject('cart-list')
 </script>
