@@ -14,7 +14,7 @@ const { favorites } = inject('state')
       <FavoritesContent />
     </div>
 
-    <div class="min-h-[calc(100dvh-633px)] flex flex-col justify-center items-center gap-2" v-else>
+    <div class="min-h-[calc(100dvh-633px)] flex flex-col justify-center items-center gap-2 max-md:pt-4 max-2xs:gap-1" v-else>
       <InfoBlock
         title="No favorites :("
         text="You haven't added anything to favorites"
